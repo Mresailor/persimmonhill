@@ -1,0 +1,139 @@
+<section class="page-banner">
+  <div class="container">
+    <span class="paw">📝</span>
+    <h1>Prospective Owner Application</h1>
+    <p>Tell us about your family and the Labrador you're hoping to welcome home.</p>
+  </div>
+</section>
+
+<section class="section container">
+  <div style="max-width:820px;margin:0 auto">
+    <p class="reveal" style="text-align:center;color:var(--ink-soft);margin-bottom:2rem">
+      We place our puppies thoughtfully, matching the right puppy with the right home. Please fill out the application below and Barb will be in touch. All submissions go directly to
+      <a href="mailto:barb@persimmonhilllabs.com">barb@persimmonhilllabs.com</a>.
+    </p>
+
+    <form class="form-card reveal" action="/api/prospective-buyer" method="POST" data-ajax>
+      <!-- honeypot -->
+      <div style="position:absolute;left:-9999px" aria-hidden="true">
+        <label>Website<input type="text" name="website_hp" tabindex="-1" autocomplete="off"></label>
+      </div>
+
+      <div class="form-row">
+        <label for="name">Name <span class="req">*</span></label>
+        <input id="name" name="Name" required>
+      </div>
+
+      <div class="form-row">
+        <label for="address">Address</label>
+        <input id="address" name="Address">
+      </div>
+
+      <div class="form-grid">
+        <div class="form-row">
+          <label for="csz">City, State, ZIP</label>
+          <input id="csz" name="City State ZIP">
+        </div>
+        <div class="form-row">
+          <label for="phone">Phone Number <span class="req">*</span></label>
+          <input id="phone" name="Phone" type="tel" required>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-row">
+          <label for="email">Email <span class="req">*</span></label>
+          <input id="email" name="Email" type="email" required>
+        </div>
+        <div class="form-row">
+          <label for="occupation">Occupation</label>
+          <input id="occupation" name="Occupation">
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-row">
+          <label for="children">Do you have children? How old are they?</label>
+          <input id="children" name="Children">
+        </div>
+        <div class="form-row">
+          <label for="vet">What veterinarian will you use / phone number?</label>
+          <input id="vet" name="Veterinarian">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="found">How did you find Persimmon Hill Labrador Retrievers?</label>
+        <input id="found" name="How did you find us">
+      </div>
+
+      <fieldset>
+        <legend>I am looking for (check all that apply)</legend>
+        <div class="check-grid">
+          <label class="check-item"><input type="checkbox" name="Looking for" value="Puppy"> Puppy</label>
+          <label class="check-item"><input type="checkbox" name="Looking for" value="Adult"> Adult</label>
+          <label class="check-item"><input type="checkbox" name="Looking for" value="Black"> Black</label>
+          <label class="check-item"><input type="checkbox" name="Looking for" value="Yellow"> Yellow</label>
+          <label class="check-item"><input type="checkbox" name="Looking for" value="Chocolate"> Chocolate</label>
+          <label class="check-item"><input type="checkbox" name="Looking for" value="Male"> Male</label>
+          <label class="check-item"><input type="checkbox" name="Looking for" value="Female"> Female</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Intentions for your Labrador</legend>
+        <div class="check-grid">
+          <label class="check-item"><input type="checkbox" name="Intentions" value="Family Companion"> Family Companion</label>
+          <label class="check-item"><input type="checkbox" name="Intentions" value="Agility"> Agility</label>
+          <label class="check-item"><input type="checkbox" name="Intentions" value="Showing"> Showing</label>
+          <label class="check-item"><input type="checkbox" name="Intentions" value="Obedience"> Obedience</label>
+          <label class="check-item"><input type="checkbox" name="Intentions" value="Hunting"> Hunting</label>
+        </div>
+      </fieldset>
+
+      <div class="form-row">
+        <label>Have you previously owned a Labrador or other dog?</label>
+        <div class="radio-inline">
+          <label><input type="radio" name="Previously owned a dog" value="Yes"> Yes</label>
+          <label><input type="radio" name="Previously owned a dog" value="No"> No</label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label>Do you own any pets at this time?</label>
+        <div class="radio-inline">
+          <label><input type="radio" name="Owns pets now" value="Yes"> Yes</label>
+          <label><input type="radio" name="Owns pets now" value="No"> No</label>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-row">
+          <label for="time">Where will your pet spend their time?</label>
+          <input id="time" name="Where pet spends time">
+        </div>
+        <div class="form-row">
+          <label for="alone">How many hours will your pet be alone?</label>
+          <input id="alone" name="Hours alone" type="number" min="0" value="0">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label>Will someone be close enough to care for the puppy during the day?</label>
+        <div class="radio-inline">
+          <label><input type="radio" name="Daytime care available" value="Yes"> Yes</label>
+          <label><input type="radio" name="Daytime care available" value="No"> No</label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="extra">Anything extra you'd like to tell me about your family?</label>
+        <textarea id="extra" name="Extra notes"></textarea>
+      </div>
+
+      <button type="submit" class="btn">Submit Application 🐾</button>
+      <div class="form-status" role="status" aria-live="polite"></div>
+      <p class="form-note">Your information is sent privately to Barb and never shared.</p>
+    </form>
+  </div>
+</section>

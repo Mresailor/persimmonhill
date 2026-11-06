@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Puppy Application — Persimmon Hill Labrador Retrievers</title>
+<meta name="description" content="Prospective owner / puppy application for Persimmon Hill Labrador Retrievers. Tell us about your family and the Labrador you're hoping to welcome home.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/images/logo.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="topbar">
+  🐾 Breeding exceptional English Labradors since 1994 · Columbus, NC · Call Barbara at
+  <a href="tel:18283519339">828-351-9339</a>
+</div>
+
+<header class="site-header">
+  <nav class="nav container">
+    <a class="brand" href="index.html">
+      <img src="assets/images/logo.png" alt="Persimmon Hill Labs logo">
+      <span class="brand-text">
+        <strong>Persimmon Hill</strong>
+        <span>Labrador Retrievers</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about-us.html">About</a></li>
+      <li><a href="our-dogs.html">Our Dogs</a></li>
+      <li><a href="puppies.html">Puppies</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="kennel.html">Our Facilities</a></li>
+      <li><a href="testimonials.html">Testimonials</a></li>
+      <li><a href="prospective-owners.html" class="active">Apply</a></li>
+      <li><a href="links.html">Links</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="page-banner">
+  <div class="container">
+    <span class="paw">📝</span>
+    <h1>Prospective Owner Application</h1>
+    <p>Tell us about your family and the Labrador you're hoping to welcome home.</p>
+  </div>
+</section>
+
+<section class="section container">
+  <div style="max-width:820px;margin:0 auto">
+    <p class="reveal" style="text-align:center;color:var(--ink-soft);margin-bottom:2rem">
+      We place our puppies thoughtfully, matching the right puppy with the right home. Please fill out the application below and Barb will be in touch. All submissions go directly to
+      <a href="mailto:barb@persimmonhilllabs.com">barb@persimmonhilllabs.com</a>.
+    </p>
+
+    <form class="form-card reveal" action="/api/prospective-buyer" method="POST" data-ajax>
+      <!-- honeypot -->
+      <div style="position:absolute;left:-9999px" aria-hidden="true">
+        <label>Website<input type="text" name="website_hp" tabindex="-1" autocomplete="off"></label>
+      </div>
+
+      <div class="form-row">
+        <label for="name">Name <span class="req">*</span></label>
+        <input id="name" name="Name" required>
+      </div>
+
+      <div class="form-row">
+        <label for="address">Address</label>
+        <input id="address" name="Address">
+      </div>
+
+      <div class="form-grid">
+        <div class="form-row">
+          <label for="csz">City, State, ZIP</label>
+          <input id="csz" name="City State ZIP">
+        </div>
+        <div class="form-row">
+          <label for="phone">Phone Number <span class="req">*</span></label>
+          <input id="phone" name="Phone" type="tel" required>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-row">
+          <label for="email">Email <span class="req">*</span></label>
+          <input id="email" name="Email" type="email" required>
+        </div>
+        <div class="form-row">
+          <label for="occupation">Occupation</label>
+          <input id="occupation" name="Occupation">
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-row">
+          <label for="children">Do you have children? How old are they?</label>
+          <input id="children" name="Children">
+        </div>
+        <div class="form-row">
+          <label for="vet">What veterinarian will you use / phone number?</label>
+          <input id="vet" name="Veterinarian">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="found">How did you find Persimmon Hill Labrador Retrievers?</label>
+        <input id="found" name="How did you find us">
+      </div>
+
+      <fieldset>
+        <legend>I am looking for (check all that apply)</legend>
+        <div class="check-grid">
+          <label class="check-item"><input type="checkbox" name="Looking for" value="Puppy"> Puppy</label>
+          <label class="check-item"><input type="checkbox" name="Looking for" value="Adult"> Adult</label>
+          <label class="check-item"><input type="checkbox" name="Looking for" value="Black"> Black</label>
+          <label class="check-item"><input type="checkbox" name="Looking for" value="Yellow"> Yellow</label>
+          <label class="check-item"><input type="checkbox" name="Looking for" value="Chocolate"> Chocolate</label>
+          <label class="check-item"><input type="checkbox" name="Looking for" value="Male"> Male</label>
+          <label class="check-item"><input type="checkbox" name="Looking for" value="Female"> Female</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Intentions for your Labrador</legend>
+        <div class="check-grid">
+          <label class="check-item"><input type="checkbox" name="Intentions" value="Family Companion"> Family Companion</label>
+          <label class="check-item"><input type="checkbox" name="Intentions" value="Agility"> Agility</label>
+          <label class="check-item"><input type="checkbox" name="Intentions" value="Showing"> Showing</label>
+          <label class="check-item"><input type="checkbox" name="Intentions" value="Obedience"> Obedience</label>
+          <label class="check-item"><input type="checkbox" name="Intentions" value="Hunting"> Hunting</label>
+        </div>
+      </fieldset>
+
+      <div class="form-row">
+        <label>Have you previously owned a Labrador or other dog?</label>
+        <div class="radio-inline">
+          <label><input type="radio" name="Previously owned a dog" value="Yes"> Yes</label>
+          <label><input type="radio" name="Previously owned a dog" value="No"> No</label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label>Do you own any pets at this time?</label>
+        <div class="radio-inline">
+          <label><input type="radio" name="Owns pets now" value="Yes"> Yes</label>
+          <label><input type="radio" name="Owns pets now" value="No"> No</label>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-row">
+          <label for="time">Where will your pet spend their time?</label>
+          <input id="time" name="Where pet spends time">
+        </div>
+        <div class="form-row">
+          <label for="alone">How many hours will your pet be alone?</label>
+          <input id="alone" name="Hours alone" type="number" min="0" value="0">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label>Will someone be close enough to care for the puppy during the day?</label>
+        <div class="radio-inline">
+          <label><input type="radio" name="Daytime care available" value="Yes"> Yes</label>
+          <label><input type="radio" name="Daytime care available" value="No"> No</label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="extra">Anything extra you'd like to tell me about your family?</label>
+        <textarea id="extra" name="Extra notes"></textarea>
+      </div>
+
+      <button type="submit" class="btn">Submit Application 🐾</button>
+      <div class="form-status" role="status" aria-live="polite"></div>
+      <p class="form-note">Your information is sent privately to Barb and never shared.</p>
+    </form>
+  </div>
+</section>
+
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <h4>Persimmon Hill Labrador Retrievers</h4>
+      <p>Beautiful, home-raised English Labradors with superb temperaments — bred with love on our 17-acre farm in the Foothills of Western North Carolina since 1994.</p>
+      <p>Home of CH Berghoff &amp; GCH Isabella.</p>
+    </div>
+    <div class="footer-contact">
+      <h4>Get in Touch</h4>
+      <p>📞 <a href="tel:18283519339">828-351-9339</a></p>
+      <p>✉️ <a href="mailto:barb@persimmonhilllabs.com">barb@persimmonhilllabs.com</a></p>
+      <p>📍 Columbus, North Carolina</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul class="footer-links">
+        <li><a href="about-us.html">About Us</a></li>
+        <li><a href="our-dogs.html">Our Dogs</a></li>
+        <li><a href="puppies.html">Upcoming Puppies</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="testimonials.html">Testimonials</a></li>
+        <li><a href="prospective-owners.html">Puppy Application</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    &copy; <span class="js-year">2026</span> Persimmon Hill Labrador Retrievers · Columbus, NC · All rights reserved.
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

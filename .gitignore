@@ -1,0 +1,6 @@
+node_modules/
+submissions.log
+*.log
+.env
+s.log
+server.out

@@ -1,0 +1,59 @@
+<section class="page-banner">
+  <div class="container">
+    <span class="paw">💌</span>
+    <h1>Contact Us</h1>
+    <p>We'd love to hear from you.</p>
+  </div>
+</section>
+
+<section class="section container">
+  <div class="split" style="align-items:start">
+    <div class="reveal">
+      <h2 style="color:var(--forest)">Let's talk Labs</h2>
+      <p>Contact us by email, or call Barbara at <a href="tel:18283519339">828-351-9339</a> for more information about our dogs and upcoming litters.</p>
+      <div class="blobbed" style="margin-top:1.4rem">
+        <p>📞 <strong>Phone:</strong> <a href="tel:18283519339">828-351-9339</a></p>
+        <p>✉️ <strong>Email:</strong> <a href="mailto:barb@persimmonhilllabs.com">barb@persimmonhilllabs.com</a></p>
+        <p>📍 <strong>Location:</strong> Columbus, North Carolina — Foothills of Western NC</p>
+        <p style="margin-bottom:0">🐾 <strong>Breeding since:</strong> 1994</p>
+      </div>
+    </div>
+
+    <form class="form-card reveal" action="/api/contact" method="POST" data-ajax>
+      <div style="position:absolute;left:-9999px" aria-hidden="true">
+        <label>Website<input type="text" name="website_hp" tabindex="-1" autocomplete="off"></label>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-row">
+          <label for="first">First Name <span class="req">*</span></label>
+          <input id="first" name="First" required>
+        </div>
+        <div class="form-row">
+          <label for="last">Last Name <span class="req">*</span></label>
+          <input id="last" name="Last" required>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-row">
+          <label for="cemail">Email <span class="req">*</span></label>
+          <input id="cemail" name="Email" type="email" required>
+        </div>
+        <div class="form-row">
+          <label for="cphone">Phone Number</label>
+          <input id="cphone" name="Phone" type="tel">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="message">Comment or Message <span class="req">*</span></label>
+        <textarea id="message" name="Message" required></textarea>
+      </div>
+
+      <button type="submit" class="btn">Send Message 💌</button>
+      <div class="form-status" role="status" aria-live="polite"></div>
+      <p class="form-note">Your message goes straight to barb@persimmonhilllabs.com.</p>
+    </form>
+  </div>
+</section>

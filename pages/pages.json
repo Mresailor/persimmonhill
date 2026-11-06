@@ -1,0 +1,68 @@
+[
+  {
+    "file": "index.html",
+    "bodyFile": "home.html",
+    "title": "Persimmon Hill Labrador Retrievers — English Labs in Western North Carolina",
+    "desc": "Persimmon Hill Labrador Retrievers — breeding beautiful, superb-tempered English Labradors since 1994 on a 17-acre farm in the Foothills of Western North Carolina. Home of CH Berghoff & GCH Isabella."
+  },
+  {
+    "file": "about-us.html",
+    "bodyFile": "about.html",
+    "title": "About Us — Persimmon Hill Labrador Retrievers",
+    "desc": "Breeding English Labrador Retrievers since 1994 on a 17-acre farm in the Foothills of Western North Carolina. Our Labs live in our home and are raised like family."
+  },
+  {
+    "file": "our-dogs.html",
+    "bodyFile": "our-dogs.html",
+    "title": "Our Dogs — Persimmon Hill Labrador Retrievers",
+    "desc": "Meet CH Spirit Oaks Berghoff's Tropical Treat and GCH Spirit Oaks Isabella of Persimmon Hill — the champion English Labradors at the heart of our program."
+  },
+  {
+    "file": "pedigree.html",
+    "bodyFile": "pedigree.html",
+    "title": "Pedigrees — Persimmon Hill Labrador Retrievers",
+    "desc": "Pedigrees for CH Spirit Oaks Berghoff's Tropical Treat and GCH Spirit Oaks Isabella of Persimmon Hill."
+  },
+  {
+    "file": "puppies.html",
+    "bodyFile": "puppies.html",
+    "title": "Upcoming Puppies — Persimmon Hill Labrador Retrievers",
+    "desc": "Upcoming Labrador Retriever puppy news from Persimmon Hill Labs. Raven and Blizzard are expecting puppies late November 2026."
+  },
+  {
+    "file": "gallery.html",
+    "bodyFile": "gallery.html",
+    "title": "Gallery — Persimmon Hill Labrador Retrievers",
+    "desc": "Photo gallery of our English Labradors, champions, puppies, and life on our 17-acre North Carolina farm."
+  },
+  {
+    "file": "kennel.html",
+    "bodyFile": "kennel.html",
+    "title": "Our Facilities — Persimmon Hill Labrador Retrievers",
+    "desc": "Take a tour of our outstanding, purpose-built kennel and whelping facilities at Persimmon Hill Labs in Columbus, North Carolina."
+  },
+  {
+    "file": "testimonials.html",
+    "bodyFile": "testimonials.html",
+    "title": "Testimonials — Persimmon Hill Labrador Retrievers",
+    "desc": "Read what Persimmon Hill Labs families say about the quality of our dogs, our professionalism, and our outstanding facilities."
+  },
+  {
+    "file": "prospective-owners.html",
+    "bodyFile": "prospective-owners.html",
+    "title": "Puppy Application — Persimmon Hill Labrador Retrievers",
+    "desc": "Prospective owner / puppy application for Persimmon Hill Labrador Retrievers. Tell us about your family and the Labrador you're hoping to welcome home."
+  },
+  {
+    "file": "links.html",
+    "bodyFile": "links.html",
+    "title": "Links & Resources — Persimmon Hill Labrador Retrievers",
+    "desc": "Helpful Labrador Retriever resources, breed clubs, and health-testing organizations recommended by Persimmon Hill Labs."
+  },
+  {
+    "file": "contact.html",
+    "bodyFile": "contact.html",
+    "title": "Contact Us — Persimmon Hill Labrador Retrievers",
+    "desc": "Contact Persimmon Hill Labrador Retrievers. Email barb@persimmonhilllabs.com or call Barbara at 828-351-9339."
+  }
+]
