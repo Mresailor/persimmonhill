@@ -1,0 +1,20 @@
+# Netlify deployment config for Persimmon Hill Labs
+# Static files are served from the repo root; serverless functions in
+# netlify/functions process the forms server-side and email Barb.
+
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+# Pretty URLs: the site's forms POST to /api/*, which we route to the functions.
+[[redirects]]
+  from = "/api/contact"
+  to = "/.netlify/functions/contact"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/prospective-buyer"
+  to = "/.netlify/functions/prospective-buyer"
+  status = 200
+  force = true

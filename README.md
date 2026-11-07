@@ -54,50 +54,57 @@ endpoints:
 - `POST /api/contact`
 - `POST /api/prospective-buyer`
 
-## ⚠️ Making the forms actually send email
+## Forms — server-side JavaScript processing
 
-The forms submit fine, but **email is only delivered once you set up ONE of
-the two options below.** Out of the box (Node server with no SMTP) submissions
-are only written to `submissions.log` — nothing is emailed. Pick one:
+Both forms POST to `/api/contact` and `/api/prospective-buyer`, where a
+**server-side JavaScript action** validates the submission, builds an email,
+and sends it to **barb@persimmonhilllabs.com**. The sending logic lives in one
+shared module — [`lib/mailer.js`](lib/mailer.js) — and is reused by three
+interchangeable server-side runtimes, so you can deploy however you like:
 
-### Option A — Formspree (recommended; works on ANY static host, no server)
+| Runtime | Files | Endpoint |
+|---------|-------|----------|
+| Node/Express server | `server.js` | `/api/*` |
+| Vercel functions | `api/contact.js`, `api/prospective-buyer.js` | `/api/*` (auto) |
+| Netlify functions | `netlify/functions/*.js` + `netlify.toml` | `/api/*` (redirect) |
 
-Best if you host the site on GitHub Pages, Netlify, S3, etc.
+All three call the same `processForm()` action. A spam honeypot silently
+discards bot submissions.
 
-1. Sign up at <https://formspree.io> and create **two** forms.
-2. Set each form's recipient to **barb@persimmonhilllabs.com**. Formspree sends
-   a confirmation email — Barb must click the link once to activate delivery.
-3. Open **`js/main.js`** and paste the two form endpoints into `FORM_ENDPOINTS`
-   at the top of the file, e.g.:
-   ```js
-   var FORM_ENDPOINTS = {
-     "/api/contact": "https://formspree.io/f/abcdwxyz",
-     "/api/prospective-buyer": "https://formspree.io/f/efghijkl"
-   };
-   ```
-That's it — the forms now email Barb directly, with no server to run.
+### The one required step: email credentials (SMTP)
 
-### Option B — the built-in Node server (`server.js`) with SMTP
-
-Best if you deploy on a Node host. Leave `FORM_ENDPOINTS` pointing at
-`/api/contact` and `/api/prospective-buyer`, then provide SMTP credentials so
-the server can send mail:
+The server-side action sends mail over SMTP. Until you provide credentials, the
+Node server only logs submissions to `submissions.log` (and the serverless
+functions log to their platform console) — **nothing is emailed**. Set these
+environment variables wherever you deploy:
 
 ```bash
-export SMTP_HOST=smtp.yourprovider.com
-export SMTP_PORT=587
-export SMTP_SECURE=false        # true for port 465
-export SMTP_USER=your-smtp-username
-export SMTP_PASS=your-smtp-password
-export MAIL_FROM=website@persimmonhilllabs.com   # optional
-npm start
+SMTP_HOST=smtp.yourprovider.com
+SMTP_PORT=587
+SMTP_SECURE=false        # true for port 465
+SMTP_USER=your-smtp-username
+SMTP_PASS=your-smtp-password
+MAIL_FROM=website@persimmonhilllabs.com   # optional
+MAIL_TO=barb@persimmonhilllabs.com        # optional (this is the default)
 ```
 
-> If you host the HTML statically (GitHub Pages, etc.) WITHOUT running
-> `server.js`, the `/api/...` endpoints don't exist and the forms will fail —
-> use Option A in that case.
+- **Express:** `export` the vars (or use a `.env` loader) and run `npm start`.
+- **Vercel:** Project → Settings → Environment Variables.
+- **Netlify:** Site settings → Environment variables.
 
-A spam honeypot field silently discards bot submissions in both options.
+Any SMTP provider works — e.g. Gmail (app password), Zoho, Fastmail,
+SendGrid/Mailgun/Postmark SMTP, or Barb's email host.
+
+> Tip: this has been verified end-to-end — with SMTP configured, a submission
+> produces a real email `To: barb@persimmonhilllabs.com` with the sender's
+> address as `Reply-To`, so Barb can just hit reply.
+
+### Prefer no server at all?
+
+You can instead point the forms at a hosted form service by editing
+`FORM_ENDPOINTS` at the top of `js/main.js`, e.g.
+`"/api/contact": "https://formspree.io/f/abcdwxyz"`. Then the site works as pure
+static files (GitHub Pages, S3, etc.) with no server-side code.
 
 ## Static-only hosting
 

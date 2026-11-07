@@ -5,25 +5,21 @@
   /* =========================================================
      FORM DELIVERY CONFIG
      ---------------------------------------------------------
-     The forms email barb@persimmonhilllabs.com. Pick ONE option:
+     The forms POST to these server-side endpoints, which process
+     the submission and email barb@persimmonhilllabs.com.
 
-     OPTION A — Formspree (recommended, works on ANY static host
-     incl. GitHub Pages; no server needed):
-       1. Go to https://formspree.io, sign up, and create TWO forms.
-          Set each form's recipient to barb@persimmonhilllabs.com
-          (Barb must click the confirmation email Formspree sends).
-       2. Paste each form's endpoint below, e.g.
-          "https://formspree.io/f/abcdwxyz".
+     Works out of the box with any of:
+       • the Express server  (server.js)              — /api/*
+       • Vercel functions    (api/*.js)               — /api/*
+       • Netlify functions   (netlify/functions + netlify.toml redirects) — /api/*
 
-     OPTION B — the built-in Node server (server.js):
-       Leave the values as "/api/contact" and
-       "/api/prospective-buyer" and run `npm start` with SMTP
-       environment variables set (see README). Do NOT host the
-       HTML statically in this case — the forms need the server.
+     To instead use a hosted form service (e.g. Formspree) with no
+     server at all, replace a value with its endpoint URL, e.g.
+       "/api/contact": "https://formspree.io/f/abcdwxyz"
      ========================================================= */
   var FORM_ENDPOINTS = {
-    "/api/contact": "/api/contact",                       // ← replace with your Formspree URL for Option A
-    "/api/prospective-buyer": "/api/prospective-buyer"    // ← replace with your Formspree URL for Option A
+    "/api/contact": "/api/contact",
+    "/api/prospective-buyer": "/api/prospective-buyer"
   };
 
   /* ---- Mobile nav toggle ---- */
