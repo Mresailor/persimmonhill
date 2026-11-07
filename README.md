@@ -54,11 +54,34 @@ endpoints:
 - `POST /api/contact`
 - `POST /api/prospective-buyer`
 
-### Email configuration
+## ⚠️ Making the forms actually send email
 
-By default (no SMTP configured) submissions are logged to `submissions.log`
-so nothing is lost in development. To send real email to
-`barb@persimmonhilllabs.com`, set these environment variables:
+The forms submit fine, but **email is only delivered once you set up ONE of
+the two options below.** Out of the box (Node server with no SMTP) submissions
+are only written to `submissions.log` — nothing is emailed. Pick one:
+
+### Option A — Formspree (recommended; works on ANY static host, no server)
+
+Best if you host the site on GitHub Pages, Netlify, S3, etc.
+
+1. Sign up at <https://formspree.io> and create **two** forms.
+2. Set each form's recipient to **barb@persimmonhilllabs.com**. Formspree sends
+   a confirmation email — Barb must click the link once to activate delivery.
+3. Open **`js/main.js`** and paste the two form endpoints into `FORM_ENDPOINTS`
+   at the top of the file, e.g.:
+   ```js
+   var FORM_ENDPOINTS = {
+     "/api/contact": "https://formspree.io/f/abcdwxyz",
+     "/api/prospective-buyer": "https://formspree.io/f/efghijkl"
+   };
+   ```
+That's it — the forms now email Barb directly, with no server to run.
+
+### Option B — the built-in Node server (`server.js`) with SMTP
+
+Best if you deploy on a Node host. Leave `FORM_ENDPOINTS` pointing at
+`/api/contact` and `/api/prospective-buyer`, then provide SMTP credentials so
+the server can send mail:
 
 ```bash
 export SMTP_HOST=smtp.yourprovider.com
@@ -70,7 +93,11 @@ export MAIL_FROM=website@persimmonhilllabs.com   # optional
 npm start
 ```
 
-A spam honeypot field silently discards bot submissions.
+> If you host the HTML statically (GitHub Pages, etc.) WITHOUT running
+> `server.js`, the `/api/...` endpoints don't exist and the forms will fail —
+> use Option A in that case.
+
+A spam honeypot field silently discards bot submissions in both options.
 
 ## Static-only hosting
 

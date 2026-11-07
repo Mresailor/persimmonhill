@@ -2,6 +2,30 @@
 (function () {
   "use strict";
 
+  /* =========================================================
+     FORM DELIVERY CONFIG
+     ---------------------------------------------------------
+     The forms email barb@persimmonhilllabs.com. Pick ONE option:
+
+     OPTION A — Formspree (recommended, works on ANY static host
+     incl. GitHub Pages; no server needed):
+       1. Go to https://formspree.io, sign up, and create TWO forms.
+          Set each form's recipient to barb@persimmonhilllabs.com
+          (Barb must click the confirmation email Formspree sends).
+       2. Paste each form's endpoint below, e.g.
+          "https://formspree.io/f/abcdwxyz".
+
+     OPTION B — the built-in Node server (server.js):
+       Leave the values as "/api/contact" and
+       "/api/prospective-buyer" and run `npm start` with SMTP
+       environment variables set (see README). Do NOT host the
+       HTML statically in this case — the forms need the server.
+     ========================================================= */
+  var FORM_ENDPOINTS = {
+    "/api/contact": "/api/contact",                       // ← replace with your Formspree URL for Option A
+    "/api/prospective-buyer": "/api/prospective-buyer"    // ← replace with your Formspree URL for Option A
+  };
+
   /* ---- Mobile nav toggle ---- */
   var toggle = document.querySelector(".nav-toggle");
   var links = document.querySelector(".nav-links");
@@ -91,15 +115,33 @@
       if (status) { status.className = "form-status"; }
 
       var data = new FormData(form);
-      fetch(form.getAttribute("action"), { method: "POST", body: data })
-        .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, body: j }; }); })
+      var rawAction = form.getAttribute("action");
+      var action = FORM_ENDPOINTS[rawAction] || rawAction;
+      fetch(action, {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" }
+      })
+        .then(function (r) {
+          return r.text().then(function (t) {
+            var j = {};
+            try { j = t ? JSON.parse(t) : {}; } catch (e) { j = {}; }
+            return { ok: r.ok, body: j };
+          });
+        })
         .then(function (res) {
-          if (res.ok && res.body.success) {
+          // Success covers both the Node backend ({success:true})
+          // and Formspree / generic 2xx responses.
+          var succeeded = res.ok && res.body.success !== false && !res.body.error && !res.body.errors;
+          if (succeeded) {
             status.textContent = "🎉 Thank you! Your message is on its way to Barb. She'll be in touch soon.";
             status.className = "form-status ok show";
             form.reset();
           } else {
-            throw new Error(res.body && res.body.error ? res.body.error : "Something went wrong.");
+            var msg = res.body.error
+              || (res.body.errors && res.body.errors[0] && res.body.errors[0].message)
+              || "Something went wrong.";
+            throw new Error(msg);
           }
         })
         .catch(function (err) {
